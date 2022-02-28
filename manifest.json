@@ -14,17 +14,18 @@
     "content_scripts": [
         {
             "matches": ["https://www.gestes.info/gestes/"],
-            "js": ["clickAccess.js"],
+            "js": ["js/clickAccess.js"],
             "run_at": "document_end"
         },
         {
             "matches": ["https://www.gestes.info/gestes/connexion"],
-            "js": ["esLogin.js"],
+            "js": ["js/esLogin.js"],
             "run_at": "document_end"
         }
     ],
     "permissions": [
-        "storage"
+        "storage",
+        "tabs"
     ],
     "host_permissions": [
         "https://www.gestes.info/*"
