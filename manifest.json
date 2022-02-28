@@ -2,30 +2,27 @@
     "name":"Autologin",
     "manifest_version": 3,
     "version":"1",
-    "description":"Cyberlearn with AAI autologin",
+    "description":"Autologin for GestES",
     "content_scripts": [
         {
-            "matches": ["https://cyberlearn.hes-so.ch/*"],
-            "exclude_matches": ["https://cyberlearn.hes-so.ch/login/index.php"],
-            "js": ["cyberloginaccess.js"],
+            "matches": ["https://www.gestes.info/gestes/"],
+            "js": ["clickAccess.js"],
             "run_at": "document_end"
         },
         {
-            "matches": ["https://cyberlearn.hes-so.ch/login/index.php"],
-            "js": ["cyberlogin.js"],
-            "run_at": "document_end"
-        },
-        {
-            "matches": ["https://hes-so.login.eduid.ch/idp/profile/SAML2/Redirect/SSO*"],
-            "js": ["hessologin.js"],
+            "matches": ["https://www.gestes.info/gestes/connexion"],
+            "js": ["esLogin.js"],
             "run_at": "document_end"
         }
     ],
     "permissions": [
-        "tabs"
+        "tabs",
+        "contextMenus"
     ],
+    "browser_action": {
+        "default_title": "Your browser action title"
+    },
     "host_permissions": [
-        "https://cyberlearn.hes-so.ch/*",
-        "https://hes-so.login.eduid.ch/*"
+        "https://www.gestes.info/*"
     ]
 }
