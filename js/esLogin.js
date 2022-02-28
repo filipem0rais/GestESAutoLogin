@@ -1,9 +1,10 @@
 
-let elements = document.getElementsByClassName('message error');
-let myCollection = Array.from(elements)
 
-if(myCollection.length === 0){
-    if(document.getElementById("username") != null){
+if(document.getElementById("username") != null){
+
+    let error_message = document.getElementsByClassName("message error")[0]
+
+    if(error_message === undefined){
         chrome.storage.sync.get("user", function(result) {
             if(result.user !== undefined){
                 document.getElementById("username").value = result.user.email
@@ -12,6 +13,9 @@ if(myCollection.length === 0){
                 document.querySelector('button').click()
             }
         })
+    } else { // Connection failed
+        error_message.innerHTML = "Les informations d'identification fournies dans l'extension sont erronées<br>Veuillez les mettre à jour et réssayer !"
     }
-}
 
+
+}
